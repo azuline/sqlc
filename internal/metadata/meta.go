@@ -24,6 +24,7 @@ type Metadata struct {
 	RuleSkiplist map[string]struct{}
 
 	Filename string
+	Filepath string
 }
 
 const (
