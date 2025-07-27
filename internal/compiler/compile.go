@@ -95,6 +95,11 @@ func (c *Compiler) parseQueries(o opts.Parser) (*Result, error) {
 			if query == nil {
 				continue
 			}
+			query.Metadata.Filepath, err = filepath.Abs(filename)
+			if err != nil {
+				merr.Add(filename, src, 0, err)
+				continue
+			}
 			query.Metadata.Filename = filepath.Base(filename)
 			queryName := query.Metadata.Name
 			if queryName != "" {
